@@ -37,5 +37,3 @@ def test_clone_and_reverse():
     clone.reverse()
     assert clone.get(0) == 'b'
 
-def test_intentional():
-    assert 1 == 2
