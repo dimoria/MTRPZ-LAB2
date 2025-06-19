@@ -15,9 +15,23 @@ def print_menu():
     print("10. Розширити іншим списком")
     print("11. Очистити список")
     print("12. Вивести довжину")
-    print("13. Вийти")
+    print("13. Вивести весь список")
+    print("14. Вийти")
+
+def print_full_list(lst):
+    try:
+        values = [lst.get(i) for i in range(lst.length())]
+        print("Список:", values)
+    except:
+        print("Список: []")
 
 def interactive_mode(lst):
+    print("\nВведіть початкові елементи списку через пробіл:")
+    initial_input = input("> ")
+    for ch in initial_input.strip().split():
+        lst.append(ch)
+    print_full_list(lst)
+
     while True:
         print_menu()
         choice = input("Оберіть опцію: ")
@@ -61,11 +75,15 @@ def interactive_mode(lst):
             elif choice == '12':
                 print("Довжина:", lst.length())
             elif choice == '13':
+                print_full_list(lst)
+            elif choice == '14':
                 break
             else:
                 print("Невідома команда")
         except Exception as e:
             print("Помилка:", e)
+
+        print_full_list(lst)
 
 if __name__ == "__main__":
     print("Оберіть тип списку:")
@@ -78,3 +96,4 @@ if __name__ == "__main__":
         structure = ArrayList()
 
     interactive_mode(structure)
+
